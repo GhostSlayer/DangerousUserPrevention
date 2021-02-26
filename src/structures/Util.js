@@ -3,6 +3,7 @@ const path = require('path');
 
 const command_directory = path.join(__dirname, "../commands");
 const event_directory = path.join(__dirname, "../events");
+const handler_directory = path.join(__dirname, "../handlers");
 
 module.exports.commands = async function loadCommands(bot) {
     const files = readdirSync(command_directory);
@@ -52,7 +53,24 @@ module.exports.events = async function loadEvents(bot) {
     console.log(`${bot.events.length} events loaded`)
 };
 
+module.exports.handlers = async function loadHandlers(bot) {
+    if (process.uptime() < 20) {
+        const files = readdirSync(handler_directory);
+        files.forEach(w => {
+            if (w.isDirectory || !w.endsWith(".js")) return;
+            let handler;
+            try {
+                handler = require(`${handler_directory}/${w}`);
+                handler(bot);
+            } catch (err) {
+                process.send({ name: "error", msg: `Handler ${w} failed to load: ${err}` });
+            }
+        });
+    }
+};
+
 module.exports.all = async function loadAll(bot) {
-    this.commands(bot);
-    this.events(bot);
+    await this.commands(bot);
+    await this.events(bot);
+    await this.handlers(bot);
 };
