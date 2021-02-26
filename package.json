@@ -1,0 +1,30 @@
+{
+  "name": "dup",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "SET NODE_ENV=development&&node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GhostSlayer/DangerousUserPrevention.git"
+  },
+  "keywords": [
+    "dangeroususer",
+    "riversiderocks"
+  ],
+  "author": "GhostSlayer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GhostSlayer/DangerousUserPrevention/issues"
+  },
+  "homepage": "https://github.com/GhostSlayer/DangerousUserPrevention#readme",
+  "dependencies": {
+    "custom-env": "^2.0.1",
+    "eris": "^0.14.0",
+    "eris-additions": "^1.4.1",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  }
+}
