@@ -1,7 +1,7 @@
 const load = require("./Util");
 const { Client } = require("eris-additions")(require("eris"))
 
-class SlayBotClient extends Client {
+class DUPClient extends Client {
     constructor(bot) {
         super(bot);
 
@@ -14,4 +14,4 @@ class SlayBotClient extends Client {
     }
 }
 
-module.exports = SlayBotClient;
+module.exports = DUPClient;
