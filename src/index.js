@@ -9,6 +9,7 @@ new DUPClient(process.env.TOKEN, {
         'guildMessages',
         'guildMessageReactions',
         'directMessages',
-        'directMessageReactions'
+        'directMessageReactions',
     ],
+    restMode: true
 })

@@ -16,8 +16,7 @@ module.exports = class extends Event {
 
         if (settings && settings.notifierChannelId) {
             const user = await fetch(`https://discord.riverside.rocks/check.json.php?id=${member.id}`).then(res => res.json())
-            //const score = user.score.replace('%', '') // remove that percent symbol to get only the amount
-            const score = 97
+            const score = user.score.replace('%', '') // remove that percent symbol to get only the amount
             const notifierChannel = guild.channels.get(settings.notifierChannelId)
 
             if (score >= 0 && score <= 29) {
@@ -60,7 +59,7 @@ module.exports = class extends Event {
                 })
                 setTimeout(() => {
                     member.ban(7, `Banned automatically by DUP: User's abuse score is ${score}%`)
-                }, '200')
+                }, '700')
             }
 
 
