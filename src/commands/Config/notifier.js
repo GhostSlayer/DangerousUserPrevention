@@ -13,7 +13,7 @@ module.exports = class extends Command {
         const value = args[0];
         const guildSettings = await Guild.findById(message.guild.id);
 
-        if (args.length < 1) return message.channel.createMessage(`${this.bot.emojis.deny} You have to mention a channel!`)
+        if (!args.length) return message.channel.createMessage(`${this.bot.emojis.deny} You have to mention a channel!`)
 
         if (value.toLowerCase() === 'disable') {
             if (!guildSettings || !guildSettings.notifierChannelId) return message.channel.createMessage('The notifier is already disabled!')
