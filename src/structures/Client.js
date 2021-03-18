@@ -11,6 +11,12 @@ class DUPClient extends Client {
         this.connect();
 
         load.all(this)
+
+        this.editStatus('online', {
+            type: 3,
+            name: 'discord.riverside.rocks',
+            url: 'https://discord.riverside.rocks'
+        })
     }
 }
 

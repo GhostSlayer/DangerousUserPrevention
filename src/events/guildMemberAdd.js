@@ -10,7 +10,7 @@ module.exports = class extends Event {
     }
 
     async run(guild, member) {
-        const settings = await Guild.findById(guild.id)
+        const settings = await Guild.findOne({ guildId: guild.id })
 
         console.log(member)
 

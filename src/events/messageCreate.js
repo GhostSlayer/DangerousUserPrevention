@@ -1,4 +1,5 @@
 const Event = require('../structures/Event');
+const Guild = require('../database/schemas/Guild')
 
 module.exports = class extends Event {
     constructor(...args) {
@@ -10,7 +11,9 @@ module.exports = class extends Event {
     async run(message) {
         if (!message || !message.member || message.member.bot) return;
 
-        let prefix = '!';
+        const config = await Guild.findOne({ guildId: message.guild.id })
+
+        let prefix = config && config.prefix ? config.prefix : 'd!';
 
         if (!message.content.startsWith(prefix)) return;
 
@@ -19,6 +22,12 @@ module.exports = class extends Event {
 
         if (command) {
             try {
+                if (command.userPermissions) {
+                    if (!message.channel.memberHasPermission(message.author.id, command.userPermissions)) {
+                        return message.channel.createMessage(`You do not have the following permissions to do this action: \`${command.userPermissions}\``)
+                    }
+                }
+
                 await command.run(message, args)
                 console.log(`${message.content} (${command.id}) ran by ${message.author.tag} (${message.author.id})`)
             } catch(err) {

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const guildConfigSchema = mongoose.Schema({
-    _id: { type: String, required: true },
-    notifierChannelId: { type: String }
+    guildId: { type: String, required: true, unique: true },
+    notifierChannelId: { type: String, unique: true }
 });
 
 module.exports = mongoose.model('guild', guildConfigSchema);

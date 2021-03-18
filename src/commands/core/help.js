@@ -7,7 +7,7 @@ module.exports = class extends Command {
             aliases: ['halp', 'bothelp', 'commands'],
             description: 'Displays every available command and information.',
             usage: 'help [command]',
-            examples: [ 'help vote' ]
+            examples: [ 'help hello' ]
         });
     }
 

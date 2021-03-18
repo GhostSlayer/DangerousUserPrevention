@@ -4,8 +4,7 @@ const fetch = require('node-fetch');
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
-            description: 'Sets the channel where to notify new users and check if they are dangerous or not.',
-            userPermissions: 'administrator'
+            description: 'Checks the user\'s information in DDUB'
         });
     }
 
@@ -40,6 +39,7 @@ module.exports = class extends Command {
 
         message.channel.createMessage({
             embed: {
+                description: 'All data comes from [DDUB](https://discord.riverside.rocks)',
                 fields: construct,
                 footer: { text: user.total_reports ? match ?
                         // if args

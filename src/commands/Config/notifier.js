@@ -11,22 +11,20 @@ module.exports = class extends Command {
 
     async run(message, args) {
         const value = args[0];
-        const guildSettings = await Guild.findById(message.guild.id);
+        const config = await Guild.findOne({ guildId: message.guild.id })
 
-        if (!args.length) return message.channel.createMessage(`${this.bot.emojis.deny} You have to mention a channel!`)
+        if (!args.length) return message.channel.createMessage(`You have to mention a channel!`)
 
         if (value.toLowerCase() === 'disable') {
-            if (!guildSettings || !guildSettings.notifierChannelId) return message.channel.createMessage('The notifier is already disabled!')
+            if (!config || !config.notifierChannelId) return message.channel.createMessage('The notifier is already disabled!')
             await guildSettings.deleteOne()
             return message.channel.createMessage(`Disabled the notifier.`)
         }
 
         const channel = message.channelMentions[0] || message.guild.channels.get(args[0]).id;
-        if (!channel) return message.channel.createMessage(`${this.bot.emojis.deny} I couldn't find that channel. Please mention a channel within this server.`);
+        if (!channel) return message.channel.createMessage(`I couldn't find that channel. Please mention a channel within this server.`);
 
-        if (guildSettings) await guildSettings.updateOne({ notifierChannelId: channel })
-        if (!guildSettings) await Guild.create({ _id: message.guild.id, notifierChannelId: channel })
-
+        await Guild.findOneAndUpdate({ guildId: message.guild.id }, { notifierChannelId: channel }, { upsert: true })
         return message.channel.createMessage(`Notifier enabled to <#${channel}>`)
     }
 };
