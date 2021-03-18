@@ -2,8 +2,8 @@ const load = require("./Util");
 const { Client } = require("eris-additions")(require("eris"))
 
 class DUPClient extends Client {
-    constructor(bot) {
-        super(bot);
+    constructor(bot, options) {
+        super(bot, options);
 
         this.commands = [];
         this.events = [];

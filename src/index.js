@@ -3,7 +3,8 @@ const DUPClient = require('./structures/Client');
 if (process.env.NODE_ENV === 'development') require('custom-env').env('development')
 else require('custom-env').env()
 
-new DUPClient(process.env.TOKEN, {
+let options = {
+    restMode: true,
     intents: [
         'guilds',
         'guildMessages',
@@ -11,5 +12,6 @@ new DUPClient(process.env.TOKEN, {
         'directMessages',
         'directMessageReactions',
     ],
-    restMode: true
-})
+}
+
+new DUPClient(process.env.TOKEN, options)
