@@ -13,7 +13,7 @@ module.exports = class extends Event {
 
         const config = await Guild.findOne({ guildId: message.guild.id })
 
-        let prefix = config && config.prefix ? config.prefix : 'd!';
+        let prefix = config && config.prefix ? config.prefix : process.env.PREFIX;
 
         if (!message.content.startsWith(prefix)) return;
 
