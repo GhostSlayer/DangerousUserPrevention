@@ -13,6 +13,7 @@ class Command {
         this.id = id;
 
         if (params) {
+            this.disable = params.disable ? params.disable : false
             this.aliases = params.aliases ? params.aliases : [];
             this.usage = params.usage;
             this.description = params.description;
