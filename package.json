@@ -24,7 +24,7 @@
     "custom-env": "^2.0.1",
     "eris": "^0.14.0",
     "eris-additions": "^1.4.1",
-    "fs": "0.0.1-security",
+    "fs": "0.0.2",
     "mongoose": "^5.11.14",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7"
