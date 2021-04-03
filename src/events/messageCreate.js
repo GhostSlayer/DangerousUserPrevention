@@ -22,6 +22,7 @@ module.exports = class extends Event {
 
         if (command) {
             try {
+                if(command.disable) return message.channel.createMessage(`This command is disabled.`)
                 if (command.userPermissions) {
                     if (!message.channel.memberHasPermission(message.author.id, command.userPermissions)) {
                         return message.channel.createMessage(`You do not have the following permissions to do this action: \`${command.userPermissions}\``)
