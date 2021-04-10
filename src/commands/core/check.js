@@ -39,7 +39,7 @@ module.exports = class extends Command {
 
         message.channel.createMessage({
             embed: {
-                description: 'All data comes from [DDUB](https://discord.riverside.rocks)',
+                description: 'All data comes from [DDUD](https://discord.riverside.rocks)',
                 fields: construct,
                 footer: { text: user.total_reports ? match ?
                         // if args

@@ -1,9 +1,19 @@
 const {readdirSync, statSync} = require('fs');
 const path = require('path');
+const { SlashCreator, GatewayServer } = require('slash-create');
+if (process.env.NODE_ENV === 'development') require('custom-env').env('development')
+else require('custom-env').env()
+const creator = new SlashCreator({
+    applicationID: process.env.CLIENT_ID,
+    publicKey: process.env.PUBLIC_KEY,
+    token: process.env.TOKEN,
+});
 
 const command_directory = path.join(__dirname, "../commands");
 const event_directory = path.join(__dirname, "../events");
 const handler_directory = path.join(__dirname, "../handlers");
+
+const slash_command_directory = path.join(__dirname, "../slash-commands")
 
 module.exports.commands = async function loadCommands(bot) {
     const files = readdirSync(command_directory);
@@ -27,6 +37,48 @@ module.exports.commands = async function loadCommands(bot) {
             bot.commands.push(_command);
         });
     });
+
+    const slashFiles = readdirSync(slash_command_directory);
+
+    creator
+        .withServer(
+            new GatewayServer(
+                (handler) => bot.on('rawWS', (event) => {
+                    if (event.t === 'INTERACTION_CREATE') {
+                        handler(event.d)
+                        console.log(`"${event.d.data.name}" ran by ${event.d.member.user.username}#${event.d.member.user.discriminator} (${event.d.member.user.id}) in guild ${event.d.guild_id} `)
+                    }
+                })
+            )
+        )
+
+    slashFiles.forEach(subfolder => {
+        const stats = statSync(`${slash_command_directory}/${subfolder}`);
+        if (!stats.isDirectory) return;
+        const cmds = readdirSync(`${slash_command_directory}/${subfolder}`);
+
+        creator
+            .registerCommandsIn(`${slash_command_directory}/${subfolder}`)
+            .syncCommands()
+
+
+        cmds.forEach(cmd => {
+            let command;
+            try {
+                if (cmd.isDirectory || !cmd.endsWith(".js")) return;
+                command = require(`${command_directory}/${subfolder}/${cmd}`);
+            } catch (err) {
+                console.log(`${cmd} failed to load: ${err}`)
+            }
+
+            // Adds commands
+            if (!command) return;
+            const _command = new command(bot, subfolder, /(.{1,})\.js/.exec(cmd)[1]);
+            bot.slash_commands.push(_command);
+        });
+    });
+
+    console.log(`${bot.slash_commands.length} slash commands loaded`)
 
     console.log(`${bot.commands.length} commands loaded`)
 };

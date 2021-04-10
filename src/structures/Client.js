@@ -6,7 +6,9 @@ class DUPClient extends Client {
         super(bot, options);
 
         this.commands = [];
+        this.slash_commands = [];
         this.events = [];
+        this.version = require("../../package.json").version;
 
         this.connect();
 
