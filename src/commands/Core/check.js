@@ -39,6 +39,7 @@ module.exports = class extends Command {
 
         message.channel.createMessage({
             embed: {
+                color: parseInt(this.bot.colors.BLURPLE),
                 description: 'All data comes from [DDUD](https://discord.riverside.rocks)',
                 fields: construct,
                 footer: { text: user.total_reports ? match ?

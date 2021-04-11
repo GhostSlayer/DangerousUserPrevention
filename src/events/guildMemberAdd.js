@@ -22,7 +22,7 @@ module.exports = class extends Event {
             if (score >= 0 && score <= 29) {
                 notifierChannel.createMessage({
                     embed: {
-                        color: 0x2ECC71,
+                        color: parseInt(this.bot.colors.GREEN),
                         title: 'Safe',
                         author: {
                             name: member.user.username,
@@ -35,7 +35,7 @@ module.exports = class extends Event {
             if (score >= 30 && score <= 49) {
                 notifierChannel.createMessage({
                     embed: {
-                        color: 0xFFFF00,
+                        color: parseInt(this.bot.colors.YELLOW),
                         title: 'Not too dangerous',
                         author: {
                             name: member.user.username,
@@ -49,7 +49,7 @@ module.exports = class extends Event {
                 member.createMessage(`You have been banned from \`${guild.name}\` for having too big abuse score. Your abuse score is ${score}%`)
                 notifierChannel.createMessage({
                     embed: {
-                        color: 0xE74C3C,
+                        color: parseInt(this.bot.colors.RED),
                         title: 'Dangerous!',
                         author: {
                             name: member.user.username,

@@ -10,9 +10,11 @@ module.exports = class extends Event {
     async run(guild) {
         const userRest = await this.bot.getRESTUser(guild.ownerID)
 
+        console.log(`Added to ${guild.name} (${guild.id})`)
+
         this.bot.createMessage('830578159660957736', {
             embed: {
-                color: parseInt(this.bot.colors.GREEN),
+                color: parseInt(this.bot.colors.RED),
                 description: `I have joined the ${guild.name} server`,
                 thumbnail: {
                     "url": guild.iconURL ? guild.iconURL : 'https://cdn.slaybot.xyz/static/Pastel-Red.png'

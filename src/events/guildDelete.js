@@ -10,6 +10,8 @@ module.exports = class extends Event {
     async run(guild) {
         const userRest = await this.bot.getRESTUser(guild.ownerID)
 
+        console.log(`Removed from ${guild.name} (${guild.id})`)
+
         this.bot.createMessage('830578159660957736', {
             embed: {
                 color: parseInt(this.bot.colors.RED),

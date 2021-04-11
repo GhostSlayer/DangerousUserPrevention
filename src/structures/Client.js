@@ -9,6 +9,7 @@ class DUPClient extends Client {
         this.slash_commands = [];
         this.events = [];
         this.version = require("../../package.json").version;
+        this.colors = require('../settings/colors.json').colors;
 
         this.connect();
 
