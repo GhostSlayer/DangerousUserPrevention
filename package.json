@@ -30,6 +30,6 @@
     "mongoose": "^5.11.14",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
-    "slash-create": "^3.0.1"
+    "slash-create": "^3.1.0"
   }
 }
