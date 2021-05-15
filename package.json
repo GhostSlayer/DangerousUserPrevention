@@ -23,7 +23,7 @@
   "homepage": "https://github.com/GhostSlayer/DangerousUserPrevention#readme",
   "dependencies": {
     "custom-env": "^2.0.1",
-    "eris": "^0.14.0",
+    "eris": "^0.14.1",
     "eris-additions": "^1.4.1",
     "express": "^4.17.1",
     "fs": "0.0.2",
