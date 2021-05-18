@@ -51,7 +51,7 @@ module.exports = class CheckCommand extends SlashCommand {
             }
 
             let embed = {
-                description: 'All data comes from [DDUD](https://discord.riverside.rocks)',
+                description: 'All data comes from [DDUB](https://discord.riverside.rocks)',
                 fields: construct,
                 footer: {
                     text: user.total_reports ? match ?

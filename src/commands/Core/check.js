@@ -9,7 +9,7 @@ module.exports = class extends Command {
     }
 
     async run(message, args) {
-        const match = message.content.match(/\d{18}/);
+        const match = args.toString().match(/\d{18}/);
         let member = match ? await this.bot.getRESTUser(match[0]) : message.member.user
 
         const user = await fetch(`https://discord.riverside.rocks/check.json.php?id=${member.id}`).then(res => res.json())
@@ -40,7 +40,12 @@ module.exports = class extends Command {
         message.channel.createMessage({
             embed: {
                 color: parseInt(this.bot.colors.BLURPLE),
-                description: 'All data comes from [DDUD](https://discord.riverside.rocks)',
+                author: {
+                    name: member.tag,
+                    icon_url: member.dynamicAvatarURL()
+                },
+                url: `https://discord.riverside.rocks/check?id=${member.id}`,
+                description: `[See reports here](https://discord.riverside.rocks/check?id=${member.id})`,
                 fields: construct,
                 footer: { text: user.total_reports ? match ?
                         // if args

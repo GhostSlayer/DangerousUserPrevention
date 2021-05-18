@@ -9,11 +9,15 @@ module.exports = class extends Event {
     }
 
     async run(message) {
+        const mentionRegexPrefix = RegExp(`^<@!?${this.bot.user.id}>`);
+        
         if (!message || !message.member || message.member.bot) return;
 
         const config = await Guild.findOne({ guildId: message.guild.id })
 
-        let prefix = config && config.prefix ? config.prefix : process.env.PREFIX;
+        let mainPrefix = config && config.prefix ? config.prefix : process.env.PREFIX;
+        const prefix = message.content.match(mentionRegexPrefix) ?
+        message.content.match(mentionRegexPrefix)[0] : mainPrefix;
 
         if (!message.content.startsWith(prefix)) return;
 

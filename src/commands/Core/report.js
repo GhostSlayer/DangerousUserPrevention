@@ -10,7 +10,7 @@ module.exports = class extends Command {
 
     async run(message, args) {
         if (!args.length) return message.channel.createMessage('Please give a user\'s id to report!')
-        const match = message.content.match(/\d{18}/);
+        const match = args.toString().match(/\d{18}/);
         let member = match ? await this.bot.getRESTUser(match[0]) : null
 
         let reason = args.slice(1).join(' ')
