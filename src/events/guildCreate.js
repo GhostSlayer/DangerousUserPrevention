@@ -14,7 +14,7 @@ module.exports = class extends Event {
 
         this.bot.createMessage('830578159660957736', {
             embed: {
-                color: parseInt(this.bot.colors.RED),
+                color: parseInt(this.bot.colors.GREEN),
                 description: `I have joined the ${guild.name} server`,
                 thumbnail: {
                     "url": guild.iconURL ? guild.iconURL : 'https://cdn.slaybot.xyz/static/Pastel-Red.png'

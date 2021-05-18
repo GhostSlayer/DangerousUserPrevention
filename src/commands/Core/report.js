@@ -15,8 +15,8 @@ module.exports = class extends Command {
 
         let reason = args.slice(1).join(' ')
 
-        if (member.id === message.author.id) return message.channel.createMessage('You can\'t report yourself!')
         if (!member) return message.channel.createMessage('That user was not found!')
+        if (member.id === message.author.id) return message.channel.createMessage('You can\'t report yourself!')
 
         const report = await fetch(`https://discord.riverside.rocks/report.json.php?id=${member.id}&key=${process.env.DDUB_TOKEN}&details=${reason ? reason : 'No reason'} (Reported by ${message.author.username})`).then(res => res.json())
 
