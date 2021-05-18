@@ -4,7 +4,6 @@ const path = require('path');
 if (process.env.NODE_ENV === 'development') require('custom-env').env('development')
 else require('custom-env').env()
 
-
 let options = {
     restMode: true,
     intents: [

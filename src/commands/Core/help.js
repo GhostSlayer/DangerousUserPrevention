@@ -43,7 +43,7 @@ module.exports = class extends Command {
 
             message.channel.createMessage({
                 embed: {
-                    color: 0x7289DA,
+                    color: parseInt(this.bot.colors.BLURPLE),
                     author: {
                         name: 'Available commands',
                         icon_url: this.bot.user.avatarURL
@@ -107,7 +107,7 @@ module.exports = class extends Command {
 
             message.channel.createMessage({
                 embed: {
-                    color: 0x7289DA,
+                    color: parseInt(this.bot.colors.BLURPLE),
                     title: `${cmd.category}:${cmd.id}`,
                     description: cmd.description || "No description given.",
                     fields: construct,

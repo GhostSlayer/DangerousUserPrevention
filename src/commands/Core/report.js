@@ -25,7 +25,7 @@ module.exports = class extends Command {
 
         message.channel.createMessage({
             embed: {
-                color: 0x7289DA,
+                color: parseInt(this.bot.colors.BLURPLE),
                 url: `https://discord.riverside.rocks/check?id=${member.id}`,
                 title: 'User Reported!',
                 description: `${member.username} was reported successfully!`,
