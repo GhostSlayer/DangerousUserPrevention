@@ -19,7 +19,7 @@ class DUPClient extends Client {
             const query = await this.mysql.query('SELECT * FROM reports');
             const config = Object.values(JSON.parse(JSON.stringify(query)));
             this.editStatus('online', {
-                type: 2,
+                type: 0,
                 name: `Reported over ${config.length} times!`
             })
         }, 30000)
