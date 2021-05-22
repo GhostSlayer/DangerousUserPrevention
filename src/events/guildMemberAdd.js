@@ -1,6 +1,5 @@
 const Event = require('../structures/Event');
 const fetch = require('node-fetch');
-const Guild = require('../database/schemas/Guild');
 
 module.exports = class extends Event {
     constructor(...args) {
@@ -10,7 +9,8 @@ module.exports = class extends Event {
     }
 
     async run(guild, member) {
-        const settings = await Guild.findOne({ guildId: guild.id })
+        const query = await this.bot.mysql.query('SELECT * FROM `guilds` WHERE `guildId` = ', guild.id);
+        const settings = Object.values(JSON.parse(JSON.stringify(query)))[0];
 
         console.log(member)
 

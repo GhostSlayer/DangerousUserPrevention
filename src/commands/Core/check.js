@@ -16,7 +16,19 @@ module.exports = class extends Command {
         const score = user.score.replace('%', '')
         let construct = []
 
-        if (score >= 0 && score <= 29) {
+        if (parseInt(score) === parseInt(0) && user.total_reports >= 1) {
+            construct.push({
+                name: 'Safe',
+                value: match ? `${member.username} is a whitelisted user.` : 'Your account is whitelisted.'
+            })
+
+            construct.push({
+                name: 'Note',
+                value: 'While the user appears to be whitelisted, it does not mean the user is safe all the time.'
+            })
+        }
+
+        if (score > 1 && score <= 29) {
             construct.push({
                 name: 'Safe',
                 value: match ? `${member.username} is completely safe.` : 'Your account is completely safe'

@@ -1,6 +1,4 @@
 const Command = require('../../structures/Command');
-const Guild = require('../../database/schemas/Guild');
-
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
@@ -12,7 +10,9 @@ module.exports = class extends Command {
     }
 
     async run(message, args) {
-        const guildSettings = await Guild.findOne({ guildId: message.channel.guild.id });
+        const query = await this.bot.mysql.query('SELECT * FROM guilds WHERE guildId = ?', message.guild.id);
+        const guildSettings = Object.values(JSON.parse(JSON.stringify(query)))[0];
+
 
         // Finds a command
         let cmd;

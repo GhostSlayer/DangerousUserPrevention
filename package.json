@@ -27,7 +27,7 @@
     "eris-additions": "^1.4.1",
     "express": "^4.17.1",
     "fs": "0.0.2",
-    "mongoose": "^5.11.14",
+    "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "slash-create": "^3.1.0"

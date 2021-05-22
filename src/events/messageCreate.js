@@ -1,5 +1,4 @@
 const Event = require('../structures/Event');
-const Guild = require('../database/schemas/Guild')
 
 module.exports = class extends Event {
     constructor(...args) {
@@ -13,7 +12,8 @@ module.exports = class extends Event {
         
         if (!message || !message.member || message.member.bot) return;
 
-        const config = await Guild.findOne({ guildId: message.guild.id })
+        const query = await this.bot.mysql.query(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
+        const config = Object.values(JSON.parse(JSON.stringify(query)))[0];
 
         let mainPrefix = config && config.prefix ? config.prefix : process.env.PREFIX;
         const prefix = message.content.match(mentionRegexPrefix) ?
@@ -26,7 +26,8 @@ module.exports = class extends Event {
 
         if (command) {
             try {
-                if(command.disable) return message.channel.createMessage(`This command is disabled.`)
+                if (command.disable) return message.channel.createMessage(`This command is disabled.`);
+
                 if (command.userPermissions) {
                     if (!message.channel.memberHasPermission(message.author.id, command.userPermissions)) {
                         return message.channel.createMessage(`You do not have the following permissions to do this action: \`${command.userPermissions}\``)

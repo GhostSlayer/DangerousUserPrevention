@@ -23,6 +23,9 @@ module.exports = class extends Command {
         if (!report) return message.channel.createMessage('Report failed. DDUB didn\'t receive the request!')
         if (report.message === 'You can only report a user every 10 minutes.') return message.channel.createMessage('This user has been already reported within the 10 minutes!')
 
+        const post = { author: message.author.id, 'reported user': member.id, reason }
+        await this.bot.mysql.query('INSERT INTO reports SET ?', post)
+
         message.channel.createMessage({
             embed: {
                 color: parseInt(this.bot.colors.BLURPLE),

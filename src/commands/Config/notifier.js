@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const Guild = require('../../database/schemas/Guild');
 
 module.exports = class extends Command {
     constructor(...args) {
@@ -11,20 +10,27 @@ module.exports = class extends Command {
 
     async run(message, args) {
         const value = args[0];
-        const config = await Guild.findOne({ guildId: message.guild.id })
 
+        const query = await this.bot.mysql.query(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
+        const config = Object.values(JSON.parse(JSON.stringify(query)))[0];
+        
         if (!args.length) return message.channel.createMessage(`You have to mention a channel!`)
 
         if (value.toLowerCase() === 'disable') {
             if (!config || !config.notifierChannelId) return message.channel.createMessage('The notifier is already disabled!')
-            await guildSettings.deleteOne()
+            await this.bot.mysql.query(`UPDATE guilds SET ? WHERE guildId = ${message.guild.id}`, { notifierChannelId: null })
             return message.channel.createMessage(`Disabled the notifier.`)
         }
 
         const channel = message.channelMentions[0] || message.guild.channels.get(args[0]).id;
         if (!channel) return message.channel.createMessage(`I couldn't find that channel. Please mention a channel within this server.`);
 
-        await Guild.findOneAndUpdate({ guildId: message.guild.id }, { notifierChannelId: channel }, { upsert: true })
+        if (!config) {
+          await this.bot.mysql.query(`INSERT INTO guilds SET ?`, { guildId: message.guild.id, notifierChannelId: channel })
+        } else {
+          await this.bot.mysql.query(`UPDATE guilds SET ? WHERE guildId = ${message.guild.id}`, { notifierChannelId: channel })
+        }
+
         return message.channel.createMessage(`Notifier enabled to <#${channel}>`)
     }
 };
