@@ -20,8 +20,7 @@ class DUPClient extends Client {
             const config = Object.values(JSON.parse(JSON.stringify(query)));
             this.editStatus('online', {
                 type: 1,
-                name: `Reported over ${config.length} times!`,
-                url: 'https://discord.riverside.rocks'
+                name: `Reported over ${config.length} times!`
             })
         }, 30000)
     }
