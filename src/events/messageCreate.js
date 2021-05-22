@@ -40,7 +40,7 @@ module.exports = class extends Event {
                 if (err && err.code && err.code === 10007 || err.code === 10008 || err.code === 10011 || err.code === 10013 ||
                     err.code === 10026 || err.code === 50001 || err.code === 50007 || err.code === 50013 || err.code === 90001 || err === "timeout") return;
 
-                return message.channel.createMessage('Sorry, an error occured..' + '```' + err + '```')
+                return message.channel.createMessage('Sorry, an error occured..')
             }
         }
     }
