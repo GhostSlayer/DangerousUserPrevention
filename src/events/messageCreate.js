@@ -14,7 +14,7 @@ module.exports = class extends Event {
 
         const config = await this.bot.mysql.rowQuery(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
 
-        let mainPrefix = config && config.prefix ? config.prefix : this.bot.config.bot.token;
+        let mainPrefix = config && config.prefix ? config.prefix : this.bot.config.bot.prefix;
         const prefix = message.content.match(mentionRegexPrefix) ?
         message.content.match(mentionRegexPrefix)[0] : mainPrefix;
 
