@@ -1,0 +1,14 @@
+bot:
+  token: ''
+  prefix: 'd!'
+  clientId: ''
+  publicKey:
+
+databases: 
+  mysql:
+    host: ''
+    user: ''
+    password: ''
+    database: 'DUP'
+
+ddubToken: ''

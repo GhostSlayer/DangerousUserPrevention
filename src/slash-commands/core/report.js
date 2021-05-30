@@ -1,6 +1,7 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
 const fetch = require('node-fetch');
 const REST = require('../../utils/rest')
+const config = require('config').util.toObject()
 
 module.exports = class ReportCommand extends SlashCommand {
     constructor(creator) {
@@ -35,7 +36,7 @@ module.exports = class ReportCommand extends SlashCommand {
             if (ctx.member.user.id === ctx.options.user) return 'You can not report yourself!'
             if (!member) return 'The user was not found!'
 
-            const report = await fetch(`https://discord.riverside.rocks/report.json.php?id=${ctx.options.user}&key=${process.env.DDUB_TOKEN}&details=${ctx.options.reason ? ctx.options.reason : ''} (Reported by ${ctx.member.user.username})`).then(res => res.json())
+            const report = await fetch(`https://discord.riverside.rocks/report.json.php?id=${ctx.options.user}&key=${config.ddubToken}&details=${ctx.options.reason ? ctx.options.reason : ''} (Reported by ${ctx.member.user.username})`).then(res => res.json())
 
             if (!report) return 'Report failed. DDUB didn\'t receive the request!'
             if (report.message === 'You can only report a user every 10 minutes.') return 'This user has been already reported within the 10 minutes!'

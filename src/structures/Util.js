@@ -1,12 +1,11 @@
 const {readdirSync, statSync} = require('fs');
 const path = require('path');
 const { SlashCreator, GatewayServer } = require('slash-create');
-if (process.env.NODE_ENV === 'development') require('custom-env').env('development')
-else require('custom-env').env()
+const config = require('config').util.toObject()
 const creator = new SlashCreator({
-    applicationID: process.env.CLIENT_ID,
-    publicKey: process.env.PUBLIC_KEY,
-    token: process.env.TOKEN,
+    applicationID: config.bot.clientId,
+    publicKey: config.bot.publicKey,
+    token: config.bot.token,
 });
 
 const command_directory = path.join(__dirname, "../commands");

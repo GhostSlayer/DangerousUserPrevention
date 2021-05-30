@@ -1,8 +1,6 @@
 const DUPClient = require('./structures/Client');
 const path = require('path');
-
-if (process.env.NODE_ENV === 'development') require('custom-env').env('development')
-else require('custom-env').env()
+const config = require('config').util.toObject()
 
 let options = {
     restMode: true,
@@ -15,4 +13,4 @@ let options = {
     ],
 }
 
-new DUPClient(process.env.TOKEN, options)
+new DUPClient(config.bot.token, options)

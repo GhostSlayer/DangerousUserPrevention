@@ -9,15 +9,15 @@ class DUPClient extends Client {
         this.events = [];
         this.version = require("../../package.json").version;
         this.colors = require('../settings/colors.json').colors;
-        this.mysql = require('../database/mysql');
+        this.config = require('config').util.toObject()
+        this.mysql = require('../database');
 
         this.connect();
 
         load.all(this)
 
         setInterval(async () => {
-            const query = await this.mysql.query('SELECT * FROM reports');
-            const config = Object.values(JSON.parse(JSON.stringify(query)));
+            const config = await this.mysql.rowQuery('SELECT * FROM reports');
             this.editStatus('online', {
                 type: 0,
                 name: `Reported over ${config.length} times!`

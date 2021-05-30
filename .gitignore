@@ -1,4 +1,4 @@
-.env.development
-.env
+config/*
+!config/default.yml
 .idea
 node_modules

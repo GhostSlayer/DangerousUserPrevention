@@ -1,5 +1,6 @@
 const Command = require('../../structures/Command');
 const fetch = require('node-fetch');
+const config = require('config').util.toObject();
 
 module.exports = class extends Command {
     constructor(...args) {
@@ -18,7 +19,7 @@ module.exports = class extends Command {
         if (!member) return message.channel.createMessage('That user was not found!')
         if (member.id === message.author.id) return message.channel.createMessage('You can\'t report yourself!')
 
-        const report = await fetch(`https://discord.riverside.rocks/report.json.php?id=${member.id}&key=${process.env.DDUB_TOKEN}&details=${reason ? reason : 'No reason'} (Reported by ${message.author.username})`).then(res => res.json())
+        const report = await fetch(`https://discord.riverside.rocks/report.json.php?id=${member.id}&key=${config.bot.token}&details=${reason ? reason : 'No reason'} (Reported by ${message.author.username})`).then(res => res.json())
 
         if (!report) return message.channel.createMessage('Report failed. DDUB didn\'t receive the request!')
         if (report.message === 'You can only report a user every 10 minutes.') return message.channel.createMessage('This user has been already reported within the 10 minutes!')

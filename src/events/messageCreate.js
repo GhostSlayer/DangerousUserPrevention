@@ -12,10 +12,9 @@ module.exports = class extends Event {
         
         if (!message || !message.member || message.member.bot) return;
 
-        const query = await this.bot.mysql.query(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
-        const config = Object.values(JSON.parse(JSON.stringify(query)))[0];
+        const config = await this.bot.mysql.rowQuery(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
 
-        let mainPrefix = config && config.prefix ? config.prefix : process.env.PREFIX;
+        let mainPrefix = config && config.prefix ? config.prefix : this.bot.config.bot.token;
         const prefix = message.content.match(mentionRegexPrefix) ?
         message.content.match(mentionRegexPrefix)[0] : mainPrefix;
 
@@ -26,7 +25,22 @@ module.exports = class extends Event {
 
         if (command) {
             try {
+                let blacklist = await this.bot.mysql.rowQuery('SELECT id FROM blacklist')
+                let blacklisted = false;
+
+                blacklist.forEach(id => {
+                    if (id.id === message.author.id || id.id === message.guild.id) return blacklisted = true;
+                });
+
+                if (blacklisted) return;
+
                 if (command.disable) return message.channel.createMessage(`This command is disabled.`);
+
+                if (command.ownerOnly) {
+                    if (!['267386908382855169'].includes(message.author.id)) {
+                        return message.channel.createMessage(`Only Developers can use this command!`)
+                    }
+                }
 
                 if (command.userPermissions) {
                     if (!message.channel.memberHasPermission(message.author.id, command.userPermissions)) {
@@ -39,6 +53,8 @@ module.exports = class extends Event {
             } catch(err) {
                 if (err && err.code && err.code === 10007 || err.code === 10008 || err.code === 10011 || err.code === 10013 ||
                     err.code === 10026 || err.code === 50001 || err.code === 50007 || err.code === 50013 || err.code === 90001 || err === "timeout") return;
+
+                console.log(err)
 
                 return message.channel.createMessage('Sorry, an error occured..')
             }
