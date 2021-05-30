@@ -48,7 +48,7 @@ module.exports = class extends Command {
                         name: 'Available commands',
                         icon_url: this.bot.user.avatarURL
                     },
-                    description: `Prefix: \`${guildSettings && guildSettings.prefix ? guildSettings.prefix : this.bot.config.bot.token}\` \nType \`${guildSettings && guildSettings.prefix ? guildSettings.prefix : this.bot.config.bot.token}help [command name]\` for command specific information.`,
+                    description: `Prefix: \`${guildSettings && guildSettings.prefix ? guildSettings.prefix : this.bot.config.bot.prefix}\` \nType \`${guildSettings && guildSettings.prefix ? guildSettings.prefix : this.bot.config.bot.prefix}help [command name]\` for command specific information.`,
                     fields: categories.map(category => ({
                         name: sortedcategories[categories.indexOf(category)],
                         value: this.bot.commands.map(c => {
