@@ -4,7 +4,10 @@ const fetch = require('node-fetch');
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
-            description: 'Checks the user\'s information in DDUB'
+            aliases: ['lookup', 'search'],
+            description: 'Checks the user\'s information in DDUB',
+            usage: '<user>',
+            examples: ['check 267386908382855169', 'check @GhostSlayer#0001']
         });
     }
 

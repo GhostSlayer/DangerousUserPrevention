@@ -25,7 +25,7 @@ module.exports = class extends Event {
 
         if (command) {
             try {
-                let blacklist = await this.bot.mysql.rowQuery('SELECT id FROM blacklist')
+                let blacklist = await this.bot.mysql.rowsQuery('SELECT id FROM blacklist')
                 let blacklisted = false;
 
                 blacklist.forEach(id => {
@@ -39,6 +39,12 @@ module.exports = class extends Event {
                 if (command.ownerOnly) {
                     if (!['267386908382855169'].includes(message.author.id)) {
                         return message.channel.createMessage(`Only Developers can use this command!`)
+                    }
+                }
+
+                if (command.botPermissions) {
+                    if (!message.channel.memberHasPermission(this.bot.user.id, command.botPermissions)) {
+                        return message.channel.createMessage(`I do not have the following permissions to do this action: \`${command.botPermissions}\``)
                     }
                 }
 

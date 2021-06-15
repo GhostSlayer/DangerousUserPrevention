@@ -10,9 +10,7 @@ module.exports = class extends Command {
     }
 
     async run(message, args) {
-        const query = await this.bot.mysql.query('SELECT * FROM guilds WHERE guildId = ?', message.guild.id);
-        const guildSettings = Object.values(JSON.parse(JSON.stringify(query)))[0];
-
+        const guildSettings = await this.bot.mysql.rowQuery('SELECT * FROM guilds WHERE guildId = ?', message.guild.id);
 
         // Finds a command
         let cmd;

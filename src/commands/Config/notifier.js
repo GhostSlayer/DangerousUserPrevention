@@ -4,7 +4,9 @@ module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
             description: 'Sets the channel where to notify new users and check if they are dangerous or not.',
-            userPermissions: 'administrator'
+            userPermissions: 'administrator',
+            usage: '<channel or disable>',
+            examples: ['notifier 827061957046960140', 'notifier disable']
         });
     }
 
@@ -14,7 +16,7 @@ module.exports = class extends Command {
         const query = await this.bot.mysql.query(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
         const config = Object.values(JSON.parse(JSON.stringify(query)))[0];
         
-        if (!args.length) return message.channel.createMessage(`You have to mention a channel!`)
+        if (!value) return message.channel.createMessage(`You have to mention a channel!`)
 
         if (value.toLowerCase() === 'disable') {
             if (!config || !config.notifierChannelId) return message.channel.createMessage('The notifier is already disabled!')

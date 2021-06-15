@@ -23,6 +23,7 @@ module.exports = class extends Event {
                 notifierChannel.createMessage({
                     embed: {
                         color: parseInt(this.bot.colors.GREEN),
+                        url: `https://discord.riverside.rocks/check?id=${member.id}`,
                         title: 'Safe',
                         author: {
                             name: member.user.username,
@@ -36,6 +37,7 @@ module.exports = class extends Event {
                 notifierChannel.createMessage({
                     embed: {
                         color: parseInt(this.bot.colors.YELLOW),
+                        url: `https://discord.riverside.rocks/check?id=${member.id}`,
                         title: 'Not too dangerous',
                         author: {
                             name: member.user.username,
@@ -46,10 +48,10 @@ module.exports = class extends Event {
             }
 
             if (score >= 50 && score <= 100) {
-                member.createMessage(`You have been banned from \`${guild.name}\` for having too big abuse score. Your abuse score is ${score}%`)
                 notifierChannel.createMessage({
                     embed: {
                         color: parseInt(this.bot.colors.RED),
+                        url: `https://discord.riverside.rocks/check?id=${member.id}`,
                         title: 'Dangerous!',
                         author: {
                             name: member.user.username,
@@ -57,9 +59,6 @@ module.exports = class extends Event {
                         }
                     },
                 })
-                setTimeout(() => {
-                    member.ban(7, `Banned automatically by DUP: User's abuse score is ${score}%`)
-                }, '700')
             }
 
 

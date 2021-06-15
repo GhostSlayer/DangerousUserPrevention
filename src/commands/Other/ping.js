@@ -7,7 +7,7 @@ module.exports = class extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         const msg = await message.channel.createMessage('Pinging...');
 
         const latency = msg.timestamp - message.timestamp;

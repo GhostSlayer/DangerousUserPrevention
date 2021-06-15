@@ -1,6 +1,4 @@
 const Command = require('../../structures/Command');
-const fetch = require('node-fetch');
-
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
@@ -18,14 +16,14 @@ module.exports = class extends Command {
       if (!method) return message.channel.createMessage('You need to choose **add** or **remove**')
       if (!type) return message.channel.createMessage('You need to choose **user** or **guild**')
       if (!id) return message.channel.createMessage('You need to type the **user id** or **guild id**')
-      if (method.toLowerCase() != 'remove' && !reason) return message.channel.createMessage('You need to type the reason for the blacklist')
+      if (method.toLowerCase() !== 'remove' && !reason) return message.channel.createMessage('You need to type the reason for the blacklist')
 
 
       if (type.toLowerCase() === 'user') {
           const blacklistSettings = await this.bot.mysql.rowQuery('SELECT * FROM blacklist WHERE id = ?', [id])
           console.log(blacklistSettings)
 
-          const apiUser = await this.bot.getRESTUser(id).catch(err => {})
+          const apiUser = await this.bot.getRESTUser(id).catch(() => {})
 
           if (method.toLowerCase() === 'add') {
               if (!blacklistSettings.length) {
@@ -60,7 +58,7 @@ module.exports = class extends Command {
 
       if (type.toLowerCase() === 'guild') {
           const blacklistSettings = await this.bot.mysql.rowQuery('SELECT * FROM blacklist WHERE ?', { id, type })
-          const apiGuild = await this.bot.getRESTGuild(id).catch(err => {})
+          const apiGuild = await this.bot.getRESTGuild(id).catch(() => {})
 
           if (method.toLowerCase() === 'add') {
               if (!blacklistSettings.length) {

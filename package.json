@@ -22,14 +22,18 @@
   },
   "homepage": "https://github.com/GhostSlayer/DangerousUserPrevention#readme",
   "dependencies": {
+    "@extreme_hero/deeptype": "^1.0.1",
+    "config": "^3.3.6",
     "custom-env": "^2.0.1",
     "eris": "^0.14.1",
     "eris-additions": "^1.4.1",
     "express": "^4.17.1",
     "fs": "0.0.2",
+    "js-yaml": "^4.1.0",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
-    "slash-create": "^3.1.0"
+    "slash-create": "^3.1.0",
+    "util": "^0.12.4"
   }
 }

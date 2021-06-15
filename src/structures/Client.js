@@ -10,7 +10,7 @@ class DUPClient extends Client {
         this.version = require("../../package.json").version;
         this.colors = require('../settings/colors.json').colors;
         this.config = require('config').util.toObject()
-        this.mysql = require('../database');
+        this.mysql = require('../../database');
 
         this.connect();
 

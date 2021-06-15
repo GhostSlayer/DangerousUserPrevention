@@ -1,5 +1,4 @@
 const Command = require('../../structures/Command');
-const fetch = require('node-fetch');
 
 module.exports = class extends Command {
     constructor(...args) {
@@ -8,7 +7,7 @@ module.exports = class extends Command {
         });
     }
 
-    async run(message, args) {
+    async run(message) {
         message.channel.createMessage({
             embed: {
                 title: 'Drivet Support',

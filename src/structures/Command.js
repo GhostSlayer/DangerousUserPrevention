@@ -16,6 +16,7 @@ class Command {
             this.disable = params.disable ? params.disable : false
             this.aliases = params.aliases ? params.aliases : [];
             this.usage = params.usage;
+            this.examples = params.examples ? params.examples : [];
             this.description = params.description;
             this.ownerOnly = params.ownerOnly ? params.ownerOnly : false;
             this.botPermissions = params.botPermissions || '';

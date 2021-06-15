@@ -4,7 +4,9 @@ const fetch = require('node-fetch');
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
-            description: 'Checks the user\'s information in DDUB'
+            description: 'Report a user to DDUB',
+            usage: '<user> [reason]',
+            examples: ['report 267386908382855169 Spamming', 'report @GhostSlayer#0001']
         });
     }
 
@@ -23,7 +25,7 @@ module.exports = class extends Command {
         if (!report) return message.channel.createMessage('Report failed. DDUB didn\'t receive the request!')
         if (report.message === 'You can only report a user every 10 minutes.') return message.channel.createMessage('This user has been already reported within the 10 minutes!')
 
-        const post = { author: message.author.id, 'reported user': member.id, reason }
+        const post = { author: message.author.id, 'reported_user': member.id, reason }
         await this.bot.mysql.query('INSERT INTO reports SET ?', post)
 
         message.channel.createMessage({

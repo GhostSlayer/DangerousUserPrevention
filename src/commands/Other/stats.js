@@ -5,7 +5,7 @@ module.exports = class extends Command {
         super(...args, {
             name: 'stats',
             aliases: ['s', 'botinfo'],
-            description: 'Displays information about SlayBot'
+            description: 'Displays information about DUP'
         });
     }
 
