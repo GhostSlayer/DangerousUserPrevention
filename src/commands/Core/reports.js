@@ -8,10 +8,12 @@ module.exports = class extends Command {
     }
 
     async run(message) {
-        const reports = await this.bot.mysql.rowsQuery('SELECT * FROM reports LIMIT 5', message.guild.id);
+        const query = await this.bot.mysql.rowsQuery('SELECT * FROM reports', message.guild.id);
+        const reports = query.reverse();
+
         let construct = []
 
-        reports.forEach((report) => {
+        reports.slice(0, 5).forEach((report, i) => {
             construct.push({
                 name: report.reported_user,
                 value: report.reason
