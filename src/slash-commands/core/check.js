@@ -29,29 +29,46 @@ module.exports = class CheckCommand extends SlashCommand {
             const score = user.score.replace('%', '')
             let construct = []
 
-            if (score >= 0 && score <= 29) {
+            if (parseInt(score) === parseInt(0) && user.total_reports >= 1) {
                 construct.push({
                     name: 'Safe',
-                    value: match ? `${member.username} is completely safe.` : 'Your account is completely safe'
+                    value: match && member.id !== ctx.member.user.id ? `${member.username} is a whitelisted user.` : 'Your account is whitelisted.'
+                })
+
+                construct.push({
+                    name: 'Note',
+                    value: 'While the user appears to be whitelisted, it does not mean the user is safe all the time.'
+                })
+            }
+
+            if (!score || score <= 29) {
+                construct.push({
+                    name: 'Safe',
+                    value: match && member.id !== ctx.member.user.id ? `${member.username} is completely safe.` : 'Your account is completely safe'
                 })
             }
 
             if (score >= 30 && score <= 49) {
                 construct.push({
                     name: 'Dunno',
-                    value: match ? `${member.username} might be dangerous` : 'Your account might be dangrous'
+                    value: match && member.id !== ctx.member.user.id ? `${member.username} might be dangerous` : 'Your account might be dangrous'
                 })
             }
 
             if (score >= 50 && score <= 100) {
                 construct.push({
                     name: 'Dangerous',
-                    value: match ? `${member.username} is dangerous! Ban that user fast as possible!` : 'Your account is dangerous!!'
+                    value: match && member.id !== ctx.member.user.id ? `${member.username} is dangerous! Ban that user fast as possible!` : 'Your account is dangerous!!'
                 })
             }
 
             let embed = {
-                description: 'All data comes from [DDUB](https://discord.riverside.rocks)',
+                author: {
+                    name: `${member.username}#${member.discriminator}`,
+                    icon_url: member.avatar ? `https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}` : 'https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png'
+                },
+                url: `https://discord.riverside.rocks/check?id=${member.id}`,
+                description: `[See reports here](https://discord.riverside.rocks/check?id=${member.id})`,
                 fields: construct,
                 footer: {
                     text: user.total_reports ? match ?

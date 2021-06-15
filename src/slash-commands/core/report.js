@@ -1,13 +1,14 @@
 const { SlashCommand, CommandOptionType } = require('slash-create');
 const fetch = require('node-fetch');
 const REST = require('../../utils/rest')
-const config = require('config').util.toObject()
+const config = require('config').util.toObject();
+const mysql = require('../../../database')
 
 module.exports = class ReportCommand extends SlashCommand {
     constructor(creator) {
         super(creator, {
             name: 'report',
-            description: 'Checks the user\'s information in DDUB',
+            description: 'Report a user to DDUB',
             options: [
                 {
                     type: CommandOptionType.USER,
@@ -40,6 +41,9 @@ module.exports = class ReportCommand extends SlashCommand {
 
             if (!report) return 'Report failed. DDUB didn\'t receive the request!'
             if (report.message === 'You can only report a user every 10 minutes.') return 'This user has been already reported within the 10 minutes!'
+
+            const post = { author: ctx.member.user.id, 'reported_user': member.id, reason: ctx.options.reason }
+            await mysql.query('INSERT INTO reports SET ?', post)
 
             return ({
                 embeds: [{
