@@ -17,7 +17,7 @@ class DUPClient extends Client {
         load.all(this)
 
         setInterval(async () => {
-            const config = await this.mysql.rowQuery('SELECT * FROM reports');
+            const config = await this.mysql.rowsQuery('SELECT * FROM reports');
             this.editStatus('online', {
                 type: 0,
                 name: `Reported over ${config.length} times!`
