@@ -22,7 +22,7 @@ module.exports = class extends Command {
         if (parseInt(score) === parseInt(0) && user.total_reports >= 1) {
             construct.push({
                 name: 'Safe',
-                value: match ? `${member.username} is a whitelisted user.` : 'Your account is whitelisted.'
+                value: match && member.id !== message.author.id ? `${member.username} is a whitelisted user.` : 'Your account is whitelisted.'
             })
 
             construct.push({
@@ -31,24 +31,24 @@ module.exports = class extends Command {
             })
         }
 
-        if (score > 1 && score <= 29) {
+        if (!score || score <= 29) {
             construct.push({
                 name: 'Safe',
-                value: match ? `${member.username} is completely safe.` : 'Your account is completely safe'
+                value: match && member.id !== message.author.id ? `${member.username} is completely safe.` : 'Your account is completely safe'
             })
         }
 
         if (score >= 30 && score <= 49) {
             construct.push({
                 name: 'Dunno',
-                value: match ? `${member.username} might be dangerous` : 'Your account might be dangrous'
+                value: match && member.id !== message.author.id ? `${member.username} might be dangerous` : 'Your account might be dangrous'
             })
         }
 
         if (score >= 50 && score <= 100) {
             construct.push({
                 name: 'Dangerous',
-                value: match ? `${member.username} is dangerous! Ban that user fast as possible!` : 'Your account is dangerous!!'
+                value: match && member.id !== message.author.id ? `${member.username} is dangerous! Ban that user fast as possible!` : 'Your account is dangerous!!'
             })
         }
 
@@ -62,7 +62,7 @@ module.exports = class extends Command {
                 url: `https://discord.riverside.rocks/check?id=${member.id}`,
                 description: `[See reports here](https://discord.riverside.rocks/check?id=${member.id})`,
                 fields: construct,
-                footer: { text: user.total_reports ? match ?
+                footer: { text: user.total_reports ? match && member.id !== message.member.user ?
                         // if args
                         `This user has been reported ${user.total_reports === 1 ? '1 time' : `${user.total_reports} times`}`
                         // if no args
