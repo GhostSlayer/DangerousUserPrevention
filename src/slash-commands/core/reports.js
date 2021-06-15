@@ -1,4 +1,4 @@
-const { SlashCommand, CommandOptionType } = require('slash-create');
+const { SlashCommand } = require('slash-create');
 const mysql = require('../../../database')
 
 module.exports = class ReportCommand extends SlashCommand {
@@ -12,14 +12,14 @@ module.exports = class ReportCommand extends SlashCommand {
         this.filePath = __filename;
     }
 
-    async run(ctx) {
+    async run() {
         try {
             const query = await mysql.rowsQuery('SELECT * FROM reports');
             const reports = query.reverse();
 
             let construct = []
 
-            reports.slice(0, 5).forEach((report, i) => {
+            reports.slice(0, 5).forEach((report) => {
                 construct.push({
                     name: report.reported_user,
                     value: report.reason ? report.reason : 'No reason provided'

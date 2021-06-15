@@ -13,7 +13,7 @@ module.exports = class extends Command {
 
         let construct = []
 
-        reports.slice(0, 5).forEach((report, i) => {
+        reports.slice(0, 5).forEach((report) => {
             construct.push({
                 name: report.reported_user,
                 value: report.reason ? report.reason : 'No reason provided'

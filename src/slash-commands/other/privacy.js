@@ -1,8 +1,4 @@
-const { SlashCommand, CommandOptionType } = require('slash-create');
-const fetch = require('node-fetch');
-const REST = require('../../utils/rest')
-const config = require('config').util.toObject();
-const mysql = require('../../../database')
+const {  } = require('slash-create');
 
 module.exports = class ReportCommand extends SlashCommand {
     constructor(creator) {
@@ -15,7 +11,7 @@ module.exports = class ReportCommand extends SlashCommand {
         this.filePath = __filename;
     }
 
-    async run(ctx) {
+    async run() {
         try {
             let construct = [];
 
