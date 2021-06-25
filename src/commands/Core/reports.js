@@ -13,18 +13,21 @@ module.exports = class extends Command {
 
         let construct = []
 
-        reports.slice(0, 5).forEach((report) => {
+        for (const report of reports.slice(0, 5)) {
+            const reporter = await this.bot.getRESTUser(report.author)
+            const reported = await this.bot.getRESTUser(report.reported_user)
+
             construct.push({
-                name: report.reported_user,
+                name: `Reporter: ${reporter.username}#${reporter.discriminator} | Reported: ${reported.username}#${reported.discriminator}`,
                 value: report.reason ? report.reason : 'No reason provided'
             })
-        })
+        }
 
         message.channel.createMessage({
             embed: {
                 title: 'All reports by DUP',
                 fields: construct,
-                footer: { text: 'Showing the latest 5 reports'}
+                footer: { text: `Showing latest 5 reports · ${reports.length} reports total · Latest report: ${reports[0].timestamp}` }
             }
         })
     }

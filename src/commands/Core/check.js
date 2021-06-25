@@ -18,8 +18,10 @@ module.exports = class extends Command {
         const user = await fetch(`https://discord.riverside.rocks/check.json.php?id=${member.id}`).then(res => res.json())
         const score = user.score.replace('%', '')
         let construct = []
+        let whitelisted = false
 
         if (parseInt(score) === parseInt(0) && user.total_reports >= 1) {
+            whitelisted = true
             construct.push({
                 name: 'Safe',
                 value: match && member.id !== message.author.id ? `${member.username} is a whitelisted user.` : 'Your account is whitelisted.'
@@ -31,7 +33,7 @@ module.exports = class extends Command {
             })
         }
 
-        if (!score || score <= 29) {
+        if (!score || score <= 29 && !whitelisted) {
             construct.push({
                 name: 'Safe',
                 value: match && member.id !== message.author.id ? `${member.username} is completely safe.` : 'Your account is completely safe'
