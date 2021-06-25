@@ -64,7 +64,7 @@ module.exports.commands = async function loadCommands(bot) {
             let command;
             try {
                 if (cmd.isDirectory || !cmd.endsWith(".js")) return;
-                command = require(`${command_directory}/${subfolder}/${cmd}`);
+                command = require(`${slash_command_directory}/${subfolder}/${cmd}`);
             } catch (err) {
                 console.log(`${cmd} failed to load: ${err}`)
             }
