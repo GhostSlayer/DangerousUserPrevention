@@ -1,0 +1,126 @@
+{
+    "help": {
+        "title": {
+            "translation": ""
+        },
+        "description": {
+            "translation": ""
+        },
+        "aliases": {
+            "translation": ""
+        },
+        "examples": {
+            "translation": ""
+        },
+        "usage": {
+            "translation": ""
+        },
+        "bot_permissions": {
+            "translation": ""
+        },
+        "required_permissions": {
+            "translation": ""
+        },
+        "owner_only": {
+            "translation": ""
+        },
+        "no_desc": {
+            "translation": ""
+        }
+    },
+    "check": {
+        "safe": {
+            "translation": ""
+        },
+        "note": {
+            "translation": ""
+        },
+        "notTooDangerous": {
+            "translation": ""
+        },
+        "dangerous": {
+            "translation": ""
+        },
+        "seeReports": {
+            "translation": ""
+        },
+        "user": {
+            "safeDesc": {
+                "translation": ""
+            },
+            "noteDesc": {
+                "translation": ""
+            },
+            "whitelistDesc": {
+                "translation": "{{memberName}} está en la lista blanca"
+            },
+            "notTooDangerousDesc": {
+                "translation": "{{memberName}} puede ser peligroso"
+            },
+            "dangerousDesc": {
+                "translation": "¡{{memberName}} es peligroso! Sugerimos que vigilar sus acciones"
+            }
+        },
+        "author": {
+            "safeDesc": {
+                "translation": "Tu cuenta es totalmente segura"
+            },
+            "whitelistDesc": {
+                "translation": "Tu cuenta está en la lista blanca"
+            },
+            "notTooDangerousDesc": {
+                "translation": "Tu cuenta puede ser peligrosa"
+            },
+            "dangerousDesc": {
+                "translation": "¡Tu cuenta es peligrosa! ¡Sal ahora!"
+            }
+        },
+        "footer": {
+            "user": {
+                "reportedOneTime": {
+                    "translation": "Este usuario ha sido reportado {{count}} veces"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Este usuario ha sido reportado {{count}} veces"
+                },
+                "reportedNever": {
+                    "translation": "Este usuario nunca ha sido reportado"
+                }
+            },
+            "author": {
+                "reportedOneTime": {
+                    "translation": "Has sido reportado {{count}} veces"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Has sido reportado {{count}} veces"
+                },
+                "reportedNever": {
+                    "translation": "Tu nunca has sido reportado"
+                }
+            }
+        }
+    },
+    "report": {
+        "noArgs": {
+            "translation": "¡Por favor indique el ID del usuario a reportar!"
+        },
+        "notFound": {
+            "translation": "!Ese usuario no fue encontrado!"
+        },
+        "cantReportSelf": {
+            "translation": "¡No puedes reportarte a ti mismo!"
+        },
+        "reportFailed": {
+            "translation": "Reporte fallido. ¡DDUB no recibió la petición!"
+        },
+        "alreadyReported": {
+            "translation": "Este usuario ya ha sido reportado entre los 10 minutos"
+        },
+        "successTitle": {
+            "translation": "¡Usuario reportado!"
+        },
+        "successDescription": {
+            "translation": "¡{{user}} ha sido reportado exitosamente!"
+        }
+    }
+}

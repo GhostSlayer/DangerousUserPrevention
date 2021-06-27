@@ -54,6 +54,7 @@ module.exports = class extends Event {
                     }
                 }
 
+
                 await command.run(message, args)
                 console.log(`${message.content} (${command.id}) ran by ${message.author.tag} (${message.author.id})`)
             } catch(err) {

@@ -1,0 +1,126 @@
+{
+    "help": {
+        "title": {
+            "translation": "Tillgängliga kommandon"
+        },
+        "description": {
+            "translation": "Prefix: `{{prefix}}`\nSkriv `{{prefix}}help [kommandonamn]` för kommandospecifik information."
+        },
+        "aliases": {
+            "translation": "Alias"
+        },
+        "examples": {
+            "translation": "Exempel"
+        },
+        "usage": {
+            "translation": "Användning"
+        },
+        "bot_permissions": {
+            "translation": "Bot behörigheter"
+        },
+        "required_permissions": {
+            "translation": "Nödvändiga behörigheter"
+        },
+        "owner_only": {
+            "translation": "Endast Ägare"
+        },
+        "no_desc": {
+            "translation": "Ingen beskrivning ges."
+        }
+    },
+    "check": {
+        "safe": {
+            "translation": "Säker"
+        },
+        "note": {
+            "translation": "Observera"
+        },
+        "notTooDangerous": {
+            "translation": "Inte alltför farlig"
+        },
+        "dangerous": {
+            "translation": "Farlig"
+        },
+        "seeReports": {
+            "translation": "Se rapporter här"
+        },
+        "user": {
+            "safeDesc": {
+                "translation": "{{memberName}} är helt säker."
+            },
+            "noteDesc": {
+                "translation": "Även om användaren är vitlistad betyder det inte att användaren är helt säker."
+            },
+            "whitelistDesc": {
+                "translation": "{{membername}} är en vitlistad användare."
+            },
+            "notTooDangerousDesc": {
+                "translation": "{{memberName}} kan vara farlig."
+            },
+            "dangerousDesc": {
+                "translation": "{{memberName}} är farlig! Vi föreslår att du övervakar hans handlingar."
+            }
+        },
+        "author": {
+            "safeDesc": {
+                "translation": "Ditt konto är helt säkert"
+            },
+            "whitelistDesc": {
+                "translation": "Ditt konto är vitlistat."
+            },
+            "notTooDangerousDesc": {
+                "translation": "Ditt konto kan möjligtvis vara farligt"
+            },
+            "dangerousDesc": {
+                "translation": "Ditt konto är farligt!! Lämna nu!"
+            }
+        },
+        "footer": {
+            "user": {
+                "reportedOneTime": {
+                    "translation": "Den här användaren har blivit rapporterad {{count}} gång"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Den här användaren har blivit rapporterad {{count}} gånger"
+                },
+                "reportedNever": {
+                    "translation": "Denna användare har aldrig rapporterats"
+                }
+            },
+            "author": {
+                "reportedOneTime": {
+                    "translation": "Du har rapporterats {{count}} gång"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Du har rapporterats {{count}} gånger"
+                },
+                "reportedNever": {
+                    "translation": "Du har aldrig blivit rapporterad"
+                }
+            }
+        }
+    },
+    "report": {
+        "noArgs": {
+            "translation": "Vänligen ge användarens ID att rapportera!"
+        },
+        "notFound": {
+            "translation": "Den användaren hittades inte!"
+        },
+        "cantReportSelf": {
+            "translation": "Du kan inte rapportera dig själv!"
+        },
+        "reportFailed": {
+            "translation": "Rapporten misslyckades! DDUB tog inte emot begäran!"
+        },
+        "alreadyReported": {
+            "translation": "Den här användaren har redan blivit rapporterad inom 10 minuter!"
+        },
+        "successTitle": {
+            "translation": "Användaren är rapporterad!"
+        },
+        "successDescription": {
+            "translation": "{{user}} har nu rapporterats!"
+        }
+    }
+}

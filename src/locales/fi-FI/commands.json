@@ -1,0 +1,126 @@
+{
+    "help": {
+        "title": {
+            "translation": "Käytettävissä olevat komennot"
+        },
+        "description": {
+            "translation": "Prefix: `{{prefix}}`\nKirjoita `{{prefix}}help [komennon nimi]`."
+        },
+        "aliases": {
+            "translation": "Aliakset"
+        },
+        "examples": {
+            "translation": "Esimerkkejä"
+        },
+        "usage": {
+            "translation": "Käyttö"
+        },
+        "bot_permissions": {
+            "translation": "Botin käyttöoikeudet"
+        },
+        "required_permissions": {
+            "translation": "Tarvittavat oikeudet"
+        },
+        "owner_only": {
+            "translation": "Vain omistajalle"
+        },
+        "no_desc": {
+            "translation": "Ei kuvausta."
+        }
+    },
+    "check": {
+        "safe": {
+            "translation": "Turvallinen"
+        },
+        "note": {
+            "translation": "Huomautus"
+        },
+        "notTooDangerous": {
+            "translation": "Ei liian vaarallinen"
+        },
+        "dangerous": {
+            "translation": "Vaarallinen"
+        },
+        "seeReports": {
+            "translation": "Katso raportit täältä"
+        },
+        "user": {
+            "safeDesc": {
+                "translation": "{{memberName}} on täysin turvallinen."
+            },
+            "noteDesc": {
+                "translation": "Vaikka käyttäjä näyttää olevan sallittujen luettelossa, se ei tarkoita, että käyttäjä on koko ajan turvallinen."
+            },
+            "whitelistDesc": {
+                "translation": "{{memberName}} on sallittujen luetteloon lisätty käyttäjä."
+            },
+            "notTooDangerousDesc": {
+                "translation": "{{memberName}} voi olla vaarallinen."
+            },
+            "dangerousDesc": {
+                "translation": "{{memberName}} on vaarallinen! Ehdotamme hänen toimiensa seuraamista."
+            }
+        },
+        "author": {
+            "safeDesc": {
+                "translation": "Tilisi on täysin turvallinen"
+            },
+            "whitelistDesc": {
+                "translation": "Tilisi on valkoisella listalla."
+            },
+            "notTooDangerousDesc": {
+                "translation": "Tilisi saattaa olla vaarallinen"
+            },
+            "dangerousDesc": {
+                "translation": "Tilisi on vaarallinen! Lähde nyt!"
+            }
+        },
+        "footer": {
+            "user": {
+                "reportedOneTime": {
+                    "translation": "Tämä käyttäjä on raportoitu {{count}} kertaa"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Tämä käyttäjä on raportoitu {{count}} kertaa"
+                },
+                "reportedNever": {
+                    "translation": "Tätä käyttäjää ei ole koskaan raportoitu"
+                }
+            },
+            "author": {
+                "reportedOneTime": {
+                    "translation": "Sinut on raportoitu {{count}} kerran"
+                },
+                "reportedMultipleTimes": {
+                    "translation": "Sinut on raportoitu {{count}} kertaa"
+                },
+                "reportedNever": {
+                    "translation": "Sinua ei ole koskaan raportoitu"
+                }
+            }
+        }
+    },
+    "report": {
+        "noArgs": {
+            "translation": "Anna käyttäjän id raporttia varten!"
+        },
+        "notFound": {
+            "translation": "Käyttäjää ei löytynyt!"
+        },
+        "cantReportSelf": {
+            "translation": "Et voi raportoida itseäsi!"
+        },
+        "reportFailed": {
+            "translation": "Raportti epäonnistui. DDUB ei saanut pyyntöä!"
+        },
+        "alreadyReported": {
+            "translation": "Tämä käyttäjä on jo ilmoitettu 10 minuutin kuluessa!"
+        },
+        "successTitle": {
+            "translation": "Käyttäjä raportoitu!"
+        },
+        "successDescription": {
+            "translation": "{{user}} raportoitiin onnistuneesti!"
+        }
+    }
+}
