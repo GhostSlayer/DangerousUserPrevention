@@ -1,5 +1,4 @@
 {
-    "generic": {
-        "translation": "Ha ocurrido un error"
-    }
+    "generic": "Ha ocurrido un error",
+    "userNotFound": ""
 }

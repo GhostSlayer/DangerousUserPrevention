@@ -1,8 +1,4 @@
 {
-    "generic": {
-        "translation": "An error has occured"
-    },
-    "userNotFound": {
-        "translation": "That user was not found!"
-    }
+    "generic": "An error has occured",
+    "userNotFound": "That user was not found!"
 }

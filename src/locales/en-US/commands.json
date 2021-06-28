@@ -1,154 +1,66 @@
 {
     "help": {
-        "title": {
-            "translation": "Available commands"
-        },
-        "description": {
-            "translation": "Prefix: `{{prefix}}`\nType `{{prefix}}help [command name]` for command specific information."
-        },
-        "aliases": {
-            "translation": "Aliases"
-        },
-        "examples": {
-            "translation": "Examples"
-        },
-        "usage": {
-            "translation": "Usage"
-        },
-        "bot_permissions": {
-            "translation": "Bot Permissions"
-        },
-        "required_permissions": {
-            "translation": "Required Permissions"
-        },
-        "owner_only": {
-            "translation": "Owner Only"
-        },
-        "no_desc": {
-            "translation": "No description given."
-        }
+        "title": "Available commands",
+        "description": "Prefix: `{{prefix}}`\nType `{{prefix}}help [command name]` for command specific information.",
+        "aliases": "Aliases",
+        "examples": "Examples",
+        "usage": "Usage",
+        "bot_permissions": "Bot Permissions",
+        "required_permissions": "Required Permissions",
+        "owner_only": "Owner Only",
+        "no_desc": "No description given."
     },
     "check": {
-        "safe": {
-            "translation": "Safe"
-        },
-        "note": {
-            "translation": "Note"
-        },
-        "notTooDangerous": {
-            "translation": "Not too dangerous"
-        },
-        "dangerous": {
-            "translation": "Dangerous"
-        },
-        "seeReports": {
-            "translation": "See reports here"
-        },
+        "safe": "Safe",
+        "note": "Note",
+        "notTooDangerous": "Not too dangerous",
+        "dangerous": "Dangerous",
+        "seeReports": "See reports here",
         "user": {
-            "safeDesc": {
-                "translation": "{{memberName}} is completely safe."
-            },
-            "noteDesc": {
-                "translation": "While the user appears to be whitelisted, it does not mean the user is safe all the time."
-            },
-            "whitelistDesc": {
-                "translation": "{{memberName}} is a whitelisted user."
-            },
-            "notTooDangerousDesc": {
-                "translation": "{{memberName}} might be dangerous."
-            },
-            "dangerousDesc": {
-                "translation": "{{memberName}} is dangerous! We suggest to monitor his actions."
-            }
+            "safeDesc": "{{memberName}} is completely safe.",
+            "noteDesc": "While the user appears to be whitelisted, it does not mean the user is safe all the time.",
+            "whitelistDesc": "{{memberName}} is a whitelisted user.",
+            "notTooDangerousDesc": "{{memberName}} might be dangerous.",
+            "dangerousDesc": "{{memberName}} is dangerous! We suggest to monitor his actions."
         },
         "author": {
-            "safeDesc": {
-                "translation": "Your account is completely safe"
-            },
-            "whitelistDesc": {
-                "translation": "Your account is whitelisted."
-            },
-            "notTooDangerousDesc": {
-                "translation": "Your account might be dangerous"
-            },
-            "dangerousDesc": {
-                "translation": "Your account is dangerous!! Leave now!"
-            }
+            "safeDesc": "Your account is completely safe",
+            "whitelistDesc": "Your account is whitelisted.",
+            "notTooDangerousDesc": "Your account might be dangerous",
+            "dangerousDesc": "Your account is dangerous!! Leave now!"
         },
         "footer": {
             "user": {
-                "reportedOneTime": {
-                    "translation": "This user has been reported {{count}} time"
-                },
-                "reportedMultipleTimes": {
-                    "translation": "This user has been reported {{count}} times"
-                },
-                "reportedNever": {
-                    "translation": "This user have never been reported"
-                }
+                "reportedOneTime": "This user has been reported {{count}} time",
+                "reportedMultipleTimes": "This user has been reported {{count}} times",
+                "reportedNever": "This user have never been reported"
             },
             "author": {
-                "reportedOneTime": {
-                    "translation": "You have been reported {{count}} time"
-                },
-                "reportedMultipleTimes": {
-                    "translation": "You have been reported {{count}} times"
-                },
-                "reportedNever": {
-                    "translation": "You have never been reported"
-                }
+                "reportedOneTime": "You have been reported {{count}} time",
+                "reportedMultipleTimes": "You have been reported {{count}} times",
+                "reportedNever": "You have never been reported"
             }
         }
     },
     "report": {
-        "noArgs": {
-            "translation": "Please give the user's id to report!"
-        },
-        "notFound": {
-            "translation": "That user was not found!"
-        },
-        "cantReportSelf": {
-            "translation": "You can't report yourself!"
-        },
-        "reportFailed": {
-            "translation": "Report failed. DDUB didn't receive the request!"
-        },
-        "alreadyReported": {
-            "translation": "This user has been already reported within the 10 minutes!"
-        },
-        "successTitle": {
-            "translation": "User Reported!"
-        },
-        "successDescription": {
-            "translation": "{{user}} was reported successfully!"
-        }
+        "noArgs": "Please give the user's id to report!",
+        "notFound": "That user was not found!",
+        "cantReportSelf": "You can't report yourself!",
+        "reportFailed": "Report failed. DDUB didn't receive the request!",
+        "alreadyReported": "This user has been already reported within the 10 minutes!",
+        "successTitle": "User Reported!",
+        "successDescription": "{{user}} was reported successfully!"
     },
     "reports": {
-        "title": {
-            "translation": "All reports by DUP"
-        },
-        "reporter": {
-            "translation": "Reporter"
-        },
-        "reported": {
-            "translation": "Reported"
-        },
-        "showingLatest": {
-            "translation": "Showing latest 5 reports"
-        },
-        "reportsTotal": {
-            "translation": "{{count}} reports total"
-        },
-        "latestReport": {
-            "translation": "Latest report: {{timestamp}}"
-        }
+        "title": "All reports by DUP",
+        "reporter": "Reporter",
+        "reported": "Reported",
+        "showingLatest": "Showing latest 5 reports",
+        "reportsTotal": "{{count}} reports total",
+        "latestReport": "Latest report: {{timestamp}}"
     },
     "warn": {
-        "success": {
-            "translation": "{{memberName}} was warned successfully"
-        },
-        "dm": {
-            "translation": "You were warned in {{serverName}} for: `{{reason}}`"
-        }
+        "success": "{{memberName}} was warned successfully",
+        "dm": "You were warned in {{serverName}} for: `{{reason}}`"
     }
 }

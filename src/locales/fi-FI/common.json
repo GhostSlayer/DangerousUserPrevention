@@ -1,8 +1,4 @@
 {
-    "yes": {
-        "translation": "Kyllä"
-    },
-    "no": {
-        "translation": "Ei"
-    }
+    "yes": "Kyllä",
+    "no": "Ei"
 }

@@ -1,8 +1,4 @@
 {
-    "yes": {
-        "translation": "Yes"
-    },
-    "no": {
-        "translation": "No"
-    }
+    "yes": "Yes",
+    "no": "No"
 }

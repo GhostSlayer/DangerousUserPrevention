@@ -1,5 +1,3 @@
 {
-    "message": {
-        "translation": "Reported over {{count}} times"
-    }
+    "message": "Reported over {{count}} times"
 }

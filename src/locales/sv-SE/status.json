@@ -1,5 +1,3 @@
 {
-    "message": {
-        "translation": "Rapporterad över {{count}} gånger"
-    }
+    "message": "Rapporterad över {{count}} gånger"
 }

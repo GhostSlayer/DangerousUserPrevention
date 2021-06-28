@@ -1,5 +1,4 @@
 {
-    "generic": {
-        "translation": "On tapahtunut virhe"
-    }
+    "generic": "On tapahtunut virhe",
+    "userNotFound": "Käyttäjää ei löytynyt!"
 }

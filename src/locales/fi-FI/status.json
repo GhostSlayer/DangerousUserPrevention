@@ -1,5 +1,3 @@
 {
-    "message": {
-        "translation": "Raportoitu yli {{count}} kertaa"
-    }
+    "message": "Raportoitu yli {{count}} kertaa"
 }
