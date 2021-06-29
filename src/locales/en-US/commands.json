@@ -62,5 +62,8 @@
     "warn": {
         "success": "{{memberName}} was warned successfully",
         "dm": "You were warned in {{serverName}} for: `{{reason}}`"
+    },
+    "token": {
+        "noArgs": "This command allows you to set your own DDUB Token to use to report users. Insert your token and you will able to report whitelabeled."
     }
 }

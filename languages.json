@@ -19,5 +19,12 @@
     "flag": ":flag_se:",
     "default": false,
     "aliases": ["Swedish", "svenska", "se", "sv-se", "sv_se"]
+  },
+  {
+    "name": "es-ES",
+    "nativeName": "Español",
+    "flag": ":flag_es:",
+    "default": false,
+    "aliases": ["Spanish", "espanol", "es", "es-es", "es_es"]
   }
 ]

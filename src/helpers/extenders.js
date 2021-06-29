@@ -7,14 +7,14 @@ const mysql = require('@drivet/database');
 Object.defineProperty(Eris.Message.prototype, "accept", {
     value: async function(key, args) {
         let translations = await i18n();
-        const query = await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id)
-        const language = translations.get(this.guild ? query.language : "en_US");
+        const query = this.guild ? await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id) : null
+        const language = translations.get(this.guild ? query.language : "en-US");
 
         if (!language) throw "Message: Invalid language set in data.";
 
         return this.channel.createMessage({
             embed: {
-                description: `${emojis.accept} ${language(key + '.translation', args)}`,
+                description: `${emojis.accept} ${language(key, args)}`,
                 color: parseInt(colors.GREEN)
             }
         })
@@ -24,14 +24,14 @@ Object.defineProperty(Eris.Message.prototype, "accept", {
 Object.defineProperty(Eris.Message.prototype, "deny", {
     value: async function(key, args) {
         let translations = await i18n();
-        const query = await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id)
+        const query = this.guild ? await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id) : null
         const language = translations.get(this.guild ? query.language : "en-US");
 
         if (!language) throw "Message: Invalid language set in data.";
 
         return this.channel.createMessage({
             embed: {
-                description: `${emojis.deny} ${language(key + '.translation', args)}`,
+                description: `${emojis.deny} ${language(key, args)}`,
                 color: parseInt(colors.RED)
             }
         })
@@ -41,10 +41,11 @@ Object.defineProperty(Eris.Message.prototype, "deny", {
 Object.defineProperty(Eris.Message.prototype, "translate", {
     value: async function(key, args) {
         let translations = await i18n();
-        const query = await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id)
+
+        const query = this.guild ? await mysql.rowQuery('SELECT language FROM guilds WHERE guildId = ?', this.guild.id) : null
         const language = translations.get(this.guild ? query.language : "en-US");
 
         if (!language) throw "Message: Invalid language set in data.";
-        return language(key + '.translation', args);
+        return language(key, args);
     }
 });

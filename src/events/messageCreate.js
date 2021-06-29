@@ -9,10 +9,11 @@ module.exports = class extends Event {
 
     async run(message) {
         const mentionRegexPrefix = RegExp(`^<@!?${this.bot.user.id}>`);
-        
-        if (!message || !message.member || message.member.bot) return;
+        console.log(message.member)
+        if (!message || message.author.bot) return;
 
-        const config = await this.bot.mysql.rowQuery(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
+        let config;
+        if (message.guild) config = await this.bot.mysql.rowQuery(`SELECT * FROM guilds WHERE guildId = ?`, message.guild.id)
 
         let mainPrefix = config && config.prefix ? config.prefix : this.bot.config.bot.prefix;
         const prefix = message.content.match(mentionRegexPrefix) ?
